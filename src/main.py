@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 
 
 
@@ -14,7 +13,7 @@ def process(frame,bg):
 	bb=bb.astype("uint8")
 	mask=(abs((r*0.241+g*0.691+b*0.068)-(br*0.241+bg*0.691+bb*0.068))>80).astype("uint8").reshape(frame.shape[:2]+(1,))
 	f=frame*mask
-	# f=cv2.filter2D(f,-1,np.ones((3,3),np.float32)/9)# Feather
+	f=cv2.filter2D(f,-1,np.ones((3,3),np.float32)/9)
 	return f
 
 
